@@ -642,6 +642,13 @@ ul {
     display: none;
 }
 
+/* Show sections on the dedicated packages page */
+.packages-page #hills-packages,
+.packages-page #adventure-packages,
+.packages-page #holy-packages {
+    display: block;
+}
+
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
