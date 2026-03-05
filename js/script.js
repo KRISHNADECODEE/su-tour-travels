@@ -229,3 +229,37 @@ if (reviewsTrack) {
         reviewsTrack.appendChild(clone);
     });
 }
+
+// 10. Package Detail Modal
+document.addEventListener('DOMContentLoaded', () => {
+    const learnMoreBtns = document.querySelectorAll('.btn-learn-more');
+    const modal = document.getElementById('packageModal');
+
+    if (modal) {
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+
+        learnMoreBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-title');
+                const img = btn.getAttribute('data-img');
+                const desc = btn.getAttribute('data-desc');
+
+                modalTitle.textContent = title;
+                modalImg.src = img;
+                modalDesc.textContent = desc;
+
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // prevent scrolling behind
+            });
+        });
+
+        // Global close function
+        window.closePackageModal = function () {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    }
+});

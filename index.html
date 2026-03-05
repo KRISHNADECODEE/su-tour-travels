@@ -217,8 +217,13 @@
                         <h3 class="package-title">Mussoorie Gateway</h3>
                         <p class="package-desc">Experience the "Queen of the Hills" with unmatched views of the
                             Himalayas and the Doon Valley.</p>
-                        <div class="package-footer" style="justify-content: flex-end;">
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target">Inquire Now</a>
+                        <div class="package-footer" style="display: flex; justify-content: space-between; gap: 10px;">
+                            <button class="btn btn-primary btn-sm hover-target btn-learn-more"
+                                data-title="Mussoorie Gateway" data-img="images/mussoorie.png"
+                                data-desc='Mussoorie, widely known as the "Queen of the Hills", is a captivating hill station offering breathtaking views of the Shivalik range and the Doon Valley. This premium package lets you explore its misty hills, the majestic Kempty Falls, historic colonial architecture along the Mall Road, and the scenic Camel&#39s Back Road. Enjoy pleasant weather, vibrant local culture, and ultimate relaxation in one of India&#39s most beloved romantic destinations.'>Learn
+                                More</button>
+                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Inquire Now</a>
                         </div>
                     </div>
                 </div>
@@ -232,8 +237,13 @@
                         <h3 class="package-title">Nainital Lake Tour</h3>
                         <p class="package-desc">Sail on the pristine Naini Lake and explore the beautiful surrounding
                             hills and vibrant local markets.</p>
-                        <div class="package-footer" style="justify-content: flex-end;">
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target">Inquire Now</a>
+                        <div class="package-footer" style="display: flex; justify-content: space-between; gap: 10px;">
+                            <button class="btn btn-primary btn-sm hover-target btn-learn-more"
+                                data-title="Nainital Lake Tour" data-img="images/nainital.png"
+                                data-desc='Nestled in the Kumaon foothills, Nainital is renowned for the mesmerizing Naini Lake surrounded by emerald mountains. This package includes a soothing boat ride on the lake, panoramic cable car rides to Snow View Point, and a stroll through the bustling Tibetan market. It&#39s a perfect blend of high-altitude tranquility, natural beauty, and local shopping, ensuring a memorable escape from the city heat.'>Learn
+                                More</button>
+                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Inquire Now</a>
                         </div>
                     </div>
                 </div>
@@ -247,8 +257,13 @@
                         <h3 class="package-title">Chopta Tungnath Trek</h3>
                         <p class="package-desc">Trek through lush meadows and dense forests to the highest Shiva temple
                             in the world.</p>
-                        <div class="package-footer" style="justify-content: flex-end;">
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target">Inquire Now</a>
+                        <div class="package-footer" style="display: flex; justify-content: space-between; gap: 10px;">
+                            <button class="btn btn-primary btn-sm hover-target btn-learn-more"
+                                data-title="Chopta Tungnath Trek" data-img="images/chopta.png"
+                                data-desc='Known as the "Mini Switzerland of India", Chopta offers unspoiled alpine meadows and serves as the base for trekking to Tungnath—the highest Shiva temple in the world. As you trek, you&#39ll witness magnificent 360-degree views of mighty Himalayan peaks like Nanda Devi and Trishul. This journey connects you with pristine, untouched nature and profound spiritual energy.'>Learn
+                                More</button>
+                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Inquire Now</a>
                         </div>
                     </div>
                 </div>
@@ -262,8 +277,13 @@
                         <h3 class="package-title">Valley of Flowers</h3>
                         <p class="package-desc">Witness a vibrant carpet of alpine flora in this UNESCO World Heritage
                             Site nestled in Uttarakhand.</p>
-                        <div class="package-footer" style="justify-content: flex-end;">
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target">Inquire Now</a>
+                        <div class="package-footer" style="display: flex; justify-content: space-between; gap: 10px;">
+                            <button class="btn btn-primary btn-sm hover-target btn-learn-more"
+                                data-title="Valley of Flowers" data-img="images/valley.png"
+                                data-desc='A UNESCO World Heritage Site, the Valley of Flowers National Park comes alive with millions of blooming alpine flowers painting the valley floor in vibrant hues. Surrounded by towering snow-capped peaks and glaciers, this magical trek offers an unforgettable encounter with rare Himalayan flora and fauna. Perfect for passionate trekkers, nature photographers, and those seeking absolute serenity.'>Learn
+                                More</button>
+                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Inquire Now</a>
                         </div>
                     </div>
                 </div>
@@ -726,6 +746,26 @@
             target="_blank" class="floating-btn whatsapp-btn hover-target" aria-label="WhatsApp Us">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
+    </div>
+
+    <!-- Package Information Modal -->
+    <div id="packageModal" class="package-modal">
+        <div class="modal-overlay" onclick="closePackageModal()"></div>
+        <div class="modal-content tilt-card">
+            <span class="close-modal" onclick="closePackageModal()"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-img-wrapper">
+                <img id="modalImg" src="" alt="Package Details">
+            </div>
+            <div class="modal-body">
+                <h3 id="modalTitle">Package Title</h3>
+                <p id="modalDesc">Detailed package info will appear here.</p>
+                <div class="modal-action">
+                    <a href="#contact" onclick="closePackageModal()"
+                        class="btn btn-primary w-100 text-center hover-target" style="display: block;">Book This
+                        Package</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
