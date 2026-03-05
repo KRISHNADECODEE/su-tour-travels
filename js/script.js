@@ -351,3 +351,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial call
     updateParallax();
 });
+
+// 10. Hotel Booking Modal
+function openHotelModal() {
+    const modal = document.getElementById('packageModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+
+    if (modal && modalImg && modalTitle && modalDesc) {
+        modalImg.src = 'images/hotel_booking.png';
+        modalTitle.innerText = 'Premium Hotel Accommodations';
+        modalDesc.innerHTML = `
+            <div style="text-align: center; padding: 1rem 0;">
+                <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 600;">
+                    Your comfort and safety are our top priorities.
+                </p>
+                <ul style="list-style: none; padding: 0; display: grid; gap: 1rem; text-align: left;">
+                    <li><i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> The most clean and hygienic rooms</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> Tasty and healthy food (Vegetarian & Non-Veg)</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> Hotels with the best scenic views</li>
+                    <li><i class="fa-solid fa-check-circle" style="color: #22c55e;"></i> 100% Safety and security for all guests</li>
+                </ul>
+            </div>
+        `;
+
+        // Update button text for this specific modal use
+        const modalActionBtn = modal.querySelector('.modal-action a');
+        if (modalActionBtn) {
+            modalActionBtn.innerText = 'Inquire About Hotels';
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Stop scrolling
+    }
+}
