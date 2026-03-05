@@ -23,6 +23,42 @@
 </head>
 
 <body class="rentals-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-accent">SU</div>
+            <div class="loader-circle"></div>
+            <p>Loading Your Journey...</p>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="contact-info">
+                <a href="tel:+918171311827" class="hover-target" style="color: var(--primary);"><i
+                        class="fa-solid fa-phone"></i> +91 8171311827</a>
+                <a href="mailto:sutourandtravel@gmail.com" class="hover-target" style="color: var(--primary);"><i
+                        class="fa-solid fa-envelope"></i>
+                    sutourandtravel@gmail.com</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/sutourandtravel" target="_blank" aria-label="Instagram"
+                    class="hover-target elegant-social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61567470883213" target="_blank" aria-label="Facebook"
+                    class="hover-target elegant-social-icon-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@sutourandtravel" target="_blank" aria-label="YouTube"
+                    class="hover-target elegant-social-icon-yt"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://share.google/o2MAF9rgw1WALpQeY" target="_blank"
+                    class="elegant-verified-badge hover-target"><i class="fa-solid fa-check-circle"></i> Google
+                    Verified</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header/Navigation (Consistent with index.html) -->
     <header class="header">
         <div class="container nav-container">
@@ -148,26 +184,44 @@
         </div>
     </section>
 
-    <!-- Footer (Consistent with index.html) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="index.html" class="logo">
-                        <span class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></span>
-                        <div class="logo-text">
-                            <span class="logo-main">SU TOUR</span>
-                            <span class="logo-sub">AND TRAVELS</span>
-                        </div>
-                    </a>
-                    <p class="footer-desc">Your trusted companion for exploring the mystical beauty of Uttarakhand. We
-                        provide premium travel experiences with safety and comfort.</p>
+    <!-- Floating Action Buttons -->
+    <div class="floating-contact-container">
+        <a href="tel:+918171311827" class="floating-btn phone-btn hover-target" aria-label="Call Us">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://wa.me/918171311827?text=Hello%20SU%20Tour%20and%20Travel,%20I%20would%20like%20to%20inquire%20about%20your%20services."
+            target="_blank" class="floating-btn whatsapp-btn hover-target" aria-label="WhatsApp Us">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Package Information Modal -->
+    <div id="packageModal" class="package-modal">
+        <div class="modal-overlay" onclick="closePackageModal()"></div>
+        <div class="modal-content tilt-card">
+            <span class="close-modal" onclick="closePackageModal()"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-img-wrapper">
+                <img id="modalImg" src="" alt="Package Details">
+            </div>
+            <div class="modal-body">
+                <h3 id="modalTitle">Package Title</h3>
+                <p id="modalDesc">Detailed package info will appear here.</p>
+                <div class="modal-action">
+                    <a href="#contact" onclick="closePackageModal()"
+                        class="btn btn-primary w-100 text-center hover-target" style="display: block;">Inquire Now</a>
                 </div>
-                <!-- ... other footer sections ... -->
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SU Tour and Travels. All rights reserved.</p>
-            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center"
+            style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+            <p>&copy; 2026 SU Tour and Travel. All Rights Reserved.</p>
+            <a href="https://share.google/o2MAF9rgw1WALpQeY" target="_blank"
+                class="elegant-verified-badge hover-target"><i class="fa-solid fa-check-circle"></i> Google
+                Verified</a>
         </div>
     </footer>
 
