@@ -127,8 +127,7 @@
                         </ul>
                         <div class="package-footer">
                             <div class="package-price">Best Rates</div>
-                            <a href="https://wa.me/918171311827?text=I'm interested in booking a Premium SUV"
-                                class="btn btn-primary">Book Now</a>
+                            <button onclick="openBookingModal('SUV Rental')" class="btn btn-primary">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -151,8 +150,8 @@
                         </ul>
                         <div class="package-footer">
                             <div class="package-price">Economical</div>
-                            <a href="https://wa.me/918171311827?text=I'm interested in booking a Maruti Ertiga"
-                                class="btn btn-primary">Book Now</a>
+                            <button onclick="openBookingModal('Maruti Ertiga Rental')" class="btn btn-primary">Book
+                                Now</button>
                         </div>
                     </div>
                 </div>
@@ -175,8 +174,8 @@
                         </ul>
                         <div class="package-footer">
                             <div class="package-price">Budget Friendly</div>
-                            <a href="https://wa.me/918171311827?text=I'm interested in booking a Swift Dzire"
-                                class="btn btn-primary">Book Now</a>
+                            <button onclick="openBookingModal('Swift Dzire Rental')" class="btn btn-primary">Book
+                                Now</button>
                         </div>
                     </div>
                 </div>
@@ -199,8 +198,8 @@
                         </ul>
                         <div class="package-footer">
                             <div class="package-price">Group Deals</div>
-                            <a href="https://wa.me/918171311827?text=I'm interested in booking a Tempo Traveller"
-                                class="btn btn-primary">Book Now</a>
+                            <button onclick="openBookingModal('Tempo Traveller Rental')" class="btn btn-primary">Book
+                                Now</button>
                         </div>
                     </div>
                 </div>
@@ -223,8 +222,8 @@
                         </ul>
                         <div class="package-footer">
                             <div class="package-price">Custom Quote</div>
-                            <a href="https://wa.me/918171311827?text=I'm interested in booking a Luxury Coach"
-                                class="btn btn-primary">Book Now</a>
+                            <button onclick="openBookingModal('Luxury Coach Rental')" class="btn btn-primary">Book
+                                Now</button>
                         </div>
                     </div>
                 </div>
@@ -255,9 +254,43 @@
                 <h3 id="modalTitle">Package Title</h3>
                 <p id="modalDesc">Detailed package info will appear here.</p>
                 <div class="modal-action">
-                    <a href="#contact" onclick="closePackageModal()"
-                        class="btn btn-primary w-100 text-center hover-target" style="display: block;">Inquire Now</a>
+                    <button
+                        onclick="closePackageModal(); openBookingModal(document.getElementById('modalTitle').innerText)"
+                        class="btn btn-primary w-100 text-center hover-target" style="display: block;">Inquire
+                        Now</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Booking Modal -->
+    <div id="bookingModal" class="package-modal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content tilt-card">
+            <span class="close-modal" onclick="closeBookingModal()"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-body">
+                <h3 style="margin-top: 1rem;">Book Your Journey</h3>
+                <p>Fill in the details below and we'll get in touch via WhatsApp.</p>
+
+                <form id="popup-booking-form" class="contact-form">
+                    <input type="hidden" id="booking-service-hidden">
+                    <div class="form-group">
+                        <input type="text" id="booking-name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="booking-phone" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="booking-service-display" class="form-control" readonly
+                            style="background: rgba(0,0,0,0.05);">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="booking-message" class="form-control" rows="3"
+                            placeholder="Additional Requirements (Optional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Confirm
+                        via WhatsApp</button>
+                </form>
             </div>
         </div>
     </div>
@@ -274,7 +307,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=2"></script>
 </body>
 
 </html>

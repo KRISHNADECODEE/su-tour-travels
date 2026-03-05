@@ -94,21 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 4. Preloader
 const preloader = document.querySelector(".preloader");
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        preloader.classList.add("fade-out");
+if (preloader) {
+    window.addEventListener("load", () => {
         setTimeout(() => {
-            preloader.style.display = "none";
-        }, 300);
-    }, 150);
-});
+            preloader.classList.add("fade-out");
+            setTimeout(() => {
+                preloader.style.display = "none";
+            }, 300);
+        }, 150);
+    });
+}
+
 
 // 5. Custom Cursor
 const cursor = document.querySelector(".cursor");
 const follower = document.querySelector(".cursor-follower");
 
 // Check if device supports hover
-if (window.matchMedia("(pointer: fine)").matches) {
+if (window.matchMedia("(pointer: fine)").matches && cursor && follower) {
     let mouseX = 0, mouseY = 0;
     let followerX = 0, followerY = 0;
 
@@ -386,3 +389,54 @@ function openHotelModal() {
         document.body.style.overflow = 'hidden'; // Stop scrolling
     }
 }
+
+// 11. Universal Booking Modal Logic
+function openBookingModal(serviceName) {
+    const modal = document.getElementById('bookingModal');
+    const serviceHidden = document.getElementById('booking-service-hidden');
+    const serviceDisplay = document.getElementById('booking-service-display');
+
+    if (modal && serviceHidden && serviceDisplay) {
+        serviceHidden.value = serviceName;
+        serviceDisplay.value = `Booking for: ${serviceName}`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeBookingModal() {
+    const modal = document.getElementById('bookingModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Handle Popup Form Submission
+document.addEventListener('DOMContentLoaded', () => {
+    const bookingForm = document.getElementById('popup-booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('booking-name').value.trim();
+            const phone = document.getElementById('booking-phone').value.trim();
+            const service = document.getElementById('booking-service-hidden').value;
+            const message = document.getElementById('booking-message').value.trim();
+
+            let whatsappMessage = `*New Booking Inquiry from Website*\n\n`;
+            whatsappMessage += `*Name:* ${name}\n`;
+            whatsappMessage += `*Phone:* ${phone}\n`;
+            whatsappMessage += `*Service:* ${service}\n`;
+            if (message) whatsappMessage += `*Message:* ${message}`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappNumber = '918171311827';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+            closeBookingModal();
+            bookingForm.reset();
+        });
+    }
+});

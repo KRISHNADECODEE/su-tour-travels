@@ -669,8 +669,9 @@
                                 data-title="Complete Chardham Yatra" data-img="images/char-dham.jpg"
                                 data-desc="The ultimate spiritual Odyssey. This 10-day journey takes you through the four most sacred sites in the Indian Himalayas: Yamunotri, Gangotri, Kedarnath, and Badrinath. Our premium package includes comfortable stays, dedicated local guides, and seamless transport. Experience the profound peace of the mountains while we handle all the logistics of this once-in-a-lifetime pilgrimage.">Learn
                                 More</button>
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
-                                style="flex: 1; text-align: center;">Book Now</a>
+                            <button onclick="openBookingModal('Complete Chardham Yatra')"
+                                class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -694,8 +695,9 @@
                                 data-title="Do Dham Yatra" data-img="images/do-dham.jpg"
                                 data-desc="A focused spiritual retreat to the two most powerful 'Dhams': Kedarnath (the abode of Shiva) and Badrinath (the abode of Vishnu). This 6-day tour is designed for those seeking a deep connection with the divine without the longer commitment of the full Char Dham. Includes expert coordination for Darshan and premium localized transport from Haridwar.">Learn
                                 More</button>
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
-                                style="flex: 1; text-align: center;">Book Now</a>
+                            <button onclick="openBookingModal('Do Dham Yatra (Kedarnath & Badrinath)')"
+                                class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -717,8 +719,9 @@
                                 data-title="Wildlife Safari & Ecotourism" data-img="images/wildlife-safari.jpg"
                                 data-desc="Step into the wild heart of India. From the tiger-rich forests of Jim Corbett to the elephant corridors of Rajaji National Park, this package offers a thrilling encounter with nature. Enjoy guided jeep safaris, stay in eco-friendly jungle resorts, and discover the diverse birdlife of Uttarakhand. Flexible durations to suit your adventure appetite.">Learn
                                 More</button>
-                            <a href="#contact" class="btn btn-outline-primary btn-sm hover-target"
-                                style="flex: 1; text-align: center;">Book Now</a>
+                            <button onclick="openBookingModal('Wildlife Safari & Ecotourism')"
+                                class="btn btn-outline-primary btn-sm hover-target"
+                                style="flex: 1; text-align: center;">Book Now</button>
                         </div>
                     </div>
                 </div>
@@ -1135,10 +1138,43 @@
                 <h3 id="modalTitle">Package Title</h3>
                 <p id="modalDesc">Detailed package info will appear here.</p>
                 <div class="modal-action">
-                    <a href="#contact" onclick="closePackageModal()"
+                    <button
+                        onclick="closePackageModal(); openBookingModal(document.getElementById('modalTitle').innerText)"
                         class="btn btn-primary w-100 text-center hover-target" style="display: block;">Book This
-                        Package</a>
+                        Package</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Universal Booking Modal -->
+    <div id="bookingModal" class="package-modal">
+        <div class="modal-overlay" onclick="closeBookingModal()"></div>
+        <div class="modal-content tilt-card">
+            <span class="close-modal" onclick="closeBookingModal()"><i class="fa-solid fa-xmark"></i></span>
+            <div class="modal-body">
+                <h3 style="margin-top: 1rem;">Book Your Journey</h3>
+                <p>Fill in the details below and we'll get in touch via WhatsApp.</p>
+
+                <form id="popup-booking-form" class="contact-form">
+                    <input type="hidden" id="booking-service-hidden">
+                    <div class="form-group">
+                        <input type="text" id="booking-name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="booking-phone" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="booking-service-display" class="form-control" readonly
+                            style="background: rgba(0,0,0,0.05);">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="booking-message" class="form-control" rows="3"
+                            placeholder="Additional Requirements (Optional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"><i class="fa-brands fa-whatsapp"></i> Confirm
+                        via WhatsApp</button>
+                </form>
             </div>
         </div>
     </div>
@@ -1158,7 +1194,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
     <!-- Custom Scripts -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=2"></script>
 </body>
 
 </html>
