@@ -165,24 +165,7 @@ if (typeof VanillaTilt !== "undefined") {
     });
 }
 
-// 7. Parallax Effect on Scroll
-const parallaxElements = document.querySelectorAll(".parallax");
-const parallaxItems = document.querySelectorAll(".parallax-element");
 
-window.addEventListener("scroll", () => {
-    let scrollY = window.pageYOffset;
-
-    parallaxElements.forEach(el => {
-        let speed = el.getAttribute("data-speed");
-        el.style.transform = `translateY(${scrollY * speed}px)`;
-    });
-
-    parallaxItems.forEach(el => {
-        let speed = el.getAttribute("data-speed");
-        // Only apply if element is in viewport for performance, simplified here:
-        el.style.transform = `translateY(${scrollY * speed * 0.1}px)`;
-    });
-});
 
 // 8. Contact Form WhatsApp Redirect
 const contactForm = document.getElementById('su-contact-form');
@@ -331,4 +314,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+    // 9. Hero Slideshow
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 0) {
+        let currentSlide = 0;
+        const slideInterval = 3500; // 3.5 seconds
+
+        const nextSlide = () => {
+            heroSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % heroSlides.length;
+            heroSlides[currentSlide].classList.add('active');
+        };
+
+        setInterval(nextSlide, slideInterval);
+    }
+
+    // 10. Parallax Effect on Scroll
+    const parallaxElements = document.querySelectorAll(".parallax");
+    const parallaxItems = document.querySelectorAll(".parallax-element");
+
+    const updateParallax = () => {
+        let scrollY = window.pageYOffset;
+
+        parallaxElements.forEach(el => {
+            let speed = el.getAttribute("data-speed");
+            el.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+
+        parallaxItems.forEach(el => {
+            let speed = el.getAttribute("data-speed");
+            el.style.transform = `translateY(${scrollY * speed * 0.1}px)`;
+        });
+    };
+
+    window.addEventListener("scroll", updateParallax);
+    // Initial call
+    updateParallax();
 });
