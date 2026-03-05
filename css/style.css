@@ -628,6 +628,10 @@ ul {
 /* =========================================
    Packages Section
    ========================================= */
+#hills-packages {
+    display: none;
+}
+
 .packages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

@@ -263,3 +263,33 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 });
+
+// 11. Toggle Hills Packages Section
+document.addEventListener('DOMContentLoaded', () => {
+    const hillsCategoryCard = document.querySelector('a[href="#hills-packages"]');
+    const hillsPackagesSection = document.getElementById('hills-packages');
+
+    if (hillsCategoryCard && hillsPackagesSection) {
+        hillsCategoryCard.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // Toggle display
+            if (hillsPackagesSection.style.display === 'block') {
+                hillsPackagesSection.style.display = 'none';
+            } else {
+                hillsPackagesSection.style.display = 'block';
+                // Trigger scroll into view a bit after rendering
+                setTimeout(() => {
+                    const headerOffset = 80;
+                    const elementPosition = hillsPackagesSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }, 50);
+            }
+        });
+    }
+});
