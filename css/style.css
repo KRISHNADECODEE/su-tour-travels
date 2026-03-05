@@ -628,7 +628,9 @@ ul {
 /* =========================================
    Packages Section
    ========================================= */
-#hills-packages {
+#hills-packages,
+#adventure-packages,
+#holy-packages {
     display: none;
 }
 

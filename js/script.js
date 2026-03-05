@@ -264,32 +264,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 11. Toggle Hills Packages Section
+// 11. Multi-Section Toggle Logic (Hills, Adventure, Holy)
 document.addEventListener('DOMContentLoaded', () => {
-    const hillsCategoryCard = document.querySelector('a[href="#hills-packages"]');
-    const hillsPackagesSection = document.getElementById('hills-packages');
+    const categoryMappings = [
+        { btn: 'a[href="#hills-packages"]', section: '#hills-packages' },
+        { btn: 'a[href="#adventure-packages"]', section: '#adventure-packages' },
+        { btn: 'a[href="#holy-packages"]', section: '#holy-packages' }
+    ];
 
-    if (hillsCategoryCard && hillsPackagesSection) {
-        hillsCategoryCard.addEventListener('click', (e) => {
-            e.preventDefault();
+    categoryMappings.forEach(map => {
+        const trigger = document.querySelector(map.btn);
+        const target = document.querySelector(map.section);
 
-            // Toggle display
-            if (hillsPackagesSection.style.display === 'block') {
-                hillsPackagesSection.style.display = 'none';
-            } else {
-                hillsPackagesSection.style.display = 'block';
-                // Trigger scroll into view a bit after rendering
-                setTimeout(() => {
-                    const headerOffset = 80;
-                    const elementPosition = hillsPackagesSection.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        if (trigger && target) {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }, 50);
-            }
-        });
-    }
+                // Toggle display
+                if (window.getComputedStyle(target).display === 'block' || target.style.display === 'block') {
+                    target.style.display = 'none';
+                } else {
+                    target.style.display = 'block';
+
+                    // Re-register tilt for new visible cards
+                    if (typeof VanillaTilt !== "undefined") {
+                        VanillaTilt.init(target.querySelectorAll(".tilt-card"), {
+                            max: 10,
+                            speed: 400,
+                            glare: true,
+                            "max-glare": 0.2,
+                            scale: 1.02
+                        });
+                    }
+
+                    // Register Learn More buttons for new section
+                    const newLearnMoreBtns = target.querySelectorAll('.btn-learn-more');
+                    const modal = document.getElementById('packageModal');
+                    if (modal) {
+                        const modalImg = document.getElementById('modalImg');
+                        const modalTitle = document.getElementById('modalTitle');
+                        const modalDesc = document.getElementById('modalDesc');
+
+                        newLearnMoreBtns.forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                modalTitle.textContent = btn.getAttribute('data-title');
+                                modalImg.src = btn.getAttribute('data-img');
+                                modalDesc.textContent = btn.getAttribute('data-desc');
+                                modal.classList.add('active');
+                                document.body.style.overflow = 'hidden';
+                            });
+                        });
+                    }
+
+                    // Smooth scroll to revealed section
+                    setTimeout(() => {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 50);
+                }
+            });
+        }
+    });
 });
